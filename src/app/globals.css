@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+
+@theme {
+  --color-utama: #1D3557;
+  --color-aksen: #C1121F;
+  --color-latar: #F1FAEE;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1D3557;
 }
 
 @theme inline {
@@ -10,13 +17,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
