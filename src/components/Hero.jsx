@@ -9,10 +9,10 @@ export default function Hero({ nama, tagline }) {
   width={100}
   height={100}
   priority
-  className=" h-28 w-28 shrink-0 rounded-full border-4 border-aksen object-cover"
+  className=" h-45 w-45 shrink-0 rounded-full border-4 border-aksen object-cover"
 />
       <div>
-        <h1 className="text-2xl font-bold text-utama md:text-3xl">Halo, saya {nama}!</h1>
+        <h1 className="text-4xl font-bold text-utama md:text-4xl">Halo, saya {nama}!</h1>
         <p className="mt-2 text-sm text-gray-700">{tagline}</p>
       </div>
     </section>
