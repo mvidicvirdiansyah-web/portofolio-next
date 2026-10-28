@@ -1,6 +1,9 @@
 export default function Footer() {
+    const tahun = new Date().getFullYear();
     return (
-        <footer className= "mt-auto w-full shrink-0 bg-[#203858] px-4 py-5 text-sm text-center text-white">
-            &copy; {new Date().getFullYear()} Muhammad Vidic Virdiansyah. Dibuat dengan Next.js di Kelas Industri UBIG.
+        <footer className="mt-auto bg-utama p-6 text-center text-latar">
+            <p>&copy; {tahun} Andi Pratama. Dibuat dengan Next.js di Kelas
+                Industri UBIG.</p>
         </footer>
-    )}
+    );
+}
