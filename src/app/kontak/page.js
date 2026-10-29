@@ -1,3 +1,10 @@
+export const metadata = {
+          title: "Kontak",
+          description: "Hubungi Muhammad Vidic Virdiansyah melalui form kontak, email, atau GitHub",
+};
+
+
+
 export default function Kontak() {
     return (
         <main className="mx-auto max-w-5xl px-4 py-10">

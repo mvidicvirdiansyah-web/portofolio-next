@@ -1,4 +1,10 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+
+
+
 
 const menu = [
     { href: "/", label: "Beranda" },
@@ -8,6 +14,7 @@ const menu = [
 ];
 
 export default function navbar() {
+    const pathname = usePathname();
     return (
         <header className="bg-utama text-white">
             <nav className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between">
@@ -15,13 +22,19 @@ export default function navbar() {
                     Muhammad Vidic Virdiansyah
                 </Link>
                 <ul className="flex flex-wrap gap-x-5 gap-y-2">
-                    {menu.map((item) => (
-                        <li key={item.href}>
-                           <a href={item.href} className="text-gray-200 hover:text-white">
-                               {item.label}
-                               </a>
-                        </li>
-                    ))}
+                    {menu.map((item) => {
+                        let kelas = "text-gray-200 hover:text-white";
+                        if (pathname === item.href) {
+                            kelas = "font-bold text-white underline underline-offset-8";
+                        }
+                        return (
+                            <li key={item.href}>
+                                <Link href={item.href} className={kelas}>
+                                    {item.label}
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
             </nav>
         </header>
