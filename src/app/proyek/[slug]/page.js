@@ -7,14 +7,16 @@ import { proyek } from "@/data/proyek";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const item = proyek.find((p) => p.slug === slug);
-    if (!item) {
-     return { title: "Proyek tidak ditemukan" };
+
+  if (!item) {
+    return { title: "Proyek tidak ditemukan" };
+  }
+
+  return {
+    title: item.judul,
+    description: item.deskripsi,
+  };
 }
-      return { title: item.judul, description: item.deskripsi };
-}
-
-
-
 
 export default async function DetailProyek({ params }) {
   const { slug } = await params;
@@ -29,6 +31,43 @@ export default async function DetailProyek({ params }) {
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
+      {/* Breadcrumb */}
+      <nav
+        aria-label="Breadcrumb"
+        className="mb-6 text-sm text-gray-600"
+      >
+        <ol className="flex flex-wrap items-center gap-2">
+          <li>
+            <Link
+              href="/"
+              className="hover:text-aksen hover:underline"
+            >
+              Beranda
+            </Link>
+          </li>
+
+          <li aria-hidden="true">/</li>
+
+          <li>
+            <Link
+              href="/proyek"
+              className="hover:text-aksen hover:underline"
+            >
+              Proyek
+            </Link>
+          </li>
+
+          <li aria-hidden="true">/</li>
+
+          <li
+            aria-current="page"
+            className="font-semibold text-utama"
+          >
+            {item.judul}
+          </li>
+        </ol>
+      </nav>
+
       <Link
         href="/proyek"
         className="text-sm font-semibold text-aksen hover:underline"
