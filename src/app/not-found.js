@@ -8,11 +8,11 @@ export default function NotFound() {
         404
       </h1>
 
-      <h2 className="mt-4 text-3xl font-bold text-utama">
+      <h2 className="mt-4 text-3xl font-bold text-utama dark:text-sky-200">
         Halaman tidak ditemukan
       </h2>
 
-      <p className="mt-3 max-w-md text-gray-600">
+      <p className="mt-3 max-w-md text-gray-600 dark:text-gray-400">
         Maaf, halaman yang kamu cari tidak tersedia
         atau mungkin sudah dipindahkan.
       </p>
