@@ -4,144 +4,192 @@
 import { useState } from "react";
 
 const kelasInput =
-    "mt-1 w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-800 placeholder:text-gray-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-400";
+  "mt-1 w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100";
 
 const kelasLabel =
-    "block font-semibold text-gray-800 dark:text-gray-100";
+  "block font-semibold text-gray-800 dark:text-gray-100";
+
+const kelasError =
+  "mt-1 text-sm text-red-600 dark:text-red-400";
 
 export default function FormKontak() {
-    const [nama, setNama] = useState("");
-    const [email, setEmail] = useState("");
-    const [error, setError] = useState({});
+  // State untuk setiap input
+  const [nama, setNama] = useState("");
+  const [email, setEmail] = useState("");
+  const [hp, setHp] = useState("");
+  const [keperluan, setKeperluan] = useState("");
+  const [pesan, setPesan] = useState("");
 
-    function kirim(e) {
-        e.preventDefault();
+  // State untuk validasi dan pesan berhasil
+  const [error, setError] = useState({});
+  const [berhasil, setBerhasil] = useState(false);
 
-        const errorBaru = {};
+  function kirim(e) {
+    e.preventDefault();
 
-        if (nama.trim() === "") {
-            errorBaru.nama = "Nama wajib diisi.";
-        }
+    const errorBaru = {};
 
-        if (!email.includes("@")) {
-            errorBaru.email =
-                "Email harus memuat tanda @, contoh nama@gmail.com.";
-        }
-
-        setError(errorBaru);
+    // Validasi nama
+    if (nama.trim() === "") {
+      errorBaru.nama = "Nama wajib diisi.";
     }
 
-    return (
-        <form onSubmit={kirim} noValidate className="space-y-4">
-            <div>
-                <label htmlFor="nama" className={kelasLabel}>
-                    Nama lengkap
-                </label>
+    // Validasi email
+    if (!email.includes("@")) {
+      errorBaru.email = "Email harus memuat tanda @.";
+    }
 
-                <input
-                    type="text"
-                    id="nama"
-                    name="nama"
-                    value={nama}
-                    onChange={(e) => setNama(e.target.value)}
-                    placeholder="Contoh: Budi Santoso"
-                    className={kelasInput}
-                />
+    // Validasi nomor HP
+    if (hp.length < 10) {
+      errorBaru.hp = "Nomor HP minimal 10 karakter.";
+    }
 
-                {error.nama && (
-                    <p className="mt-1 text-sm text-aksen dark:text-red-300">
-                        {error.nama}
-                    </p>
-                )}
-            </div>
+    // Validasi keperluan
+    if (keperluan === "") {
+      errorBaru.keperluan = "Silakan pilih keperluan.";
+    }
 
-            <div>
-                <label htmlFor="email" className={kelasLabel}>
-                    Email
-                </label>
+    // Validasi pesan
+    if (pesan.trim().length < 10) {
+      errorBaru.pesan = "Pesan minimal 10 karakter.";
+    }
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="nama@gmail.com"
-                    className={kelasInput}
-                />
+    setError(errorBaru);
 
-                {error.email && (
-                    <p className="mt-1 text-sm text-aksen dark:text-red-300">
-                        {error.email}
-                    </p>
-                )}
-            </div>
+    // Jika tidak ada error, tampilkan pesan berhasil
+    setBerhasil(Object.keys(errorBaru).length === 0);
+  }
 
-            <div>
-                <label htmlFor="hp" className={kelasLabel}>
-                    Nomor HP
-                </label>
+  function ubahInput(setter) {
+    return (e) => {
+      setter(e.target.value);
+      setBerhasil(false);
+    };
+  }
 
-                <input
-                    type="tel"
-                    id="hp"
-                    name="Nomor HP"
-                    placeholder="081234567890"
-                    required
-                    className={kelasInput}
-                />
-            </div>
+  return (
+    <form onSubmit={kirim} className="space-y-5">
 
-            <div>
-                <label htmlFor="keperluan" className={kelasLabel}>
-                    Keperluan
-                </label>
+      {/* Nama */}
+      <div>
+        <label htmlFor="nama" className={kelasLabel}>
+          Nama Lengkap
+        </label>
 
-                <select
-                    id="keperluan"
-                    name="Keperluan"
-                    required
-                    defaultValue=""
-                    className={kelasInput}
-                >
-                    <option value="" disabled>
-                        -- Pilih keperluan --
-                    </option>
-                    <option value="Kerja sama">Kerja sama</option>
-                    <option value="Pembuatan website">
-                        Pembuatan website
-                    </option>
-                    <option value="Pertanyaan">Pertanyaan</option>
-                    <option value="Lainnya">Lainnya</option>
-                </select>
-            </div>
+        <input
+          type="text"
+          id="nama"
+          value={nama}
+          onChange={ubahInput(setNama)}
+          className={kelasInput}
+          placeholder="Masukkan nama lengkap"
+        />
 
-            <div>
-                <label htmlFor="pesan" className={kelasLabel}>
-                    Pesan
-                </label>
+        {error.nama && (
+          <p className={kelasError}>{error.nama}</p>
+        )}
+      </div>
 
-                <textarea
-                    id="pesan"
-                    name="Pesan"
-                    rows={5}
-                    placeholder="Tulis pesanmu di sini..."
-                    required
-                    className={kelasInput}
-                />
-            </div>
+      {/* Email */}
+      <div>
+        <label htmlFor="email" className={kelasLabel}>
+          Email
+        </label>
 
-            <button
-                type="submit"
-                className="rounded-lg bg-aksen px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-            >
-                Kirim Pesan
-            </button>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={ubahInput(setEmail)}
+          className={kelasInput}
+          placeholder="nama@email.com"
+        />
 
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-                Pengiriman pesan memerlukan aplikasi email yang tersedia
-                di perangkatmu.
-            </p>
-        </form>
-    );
+        {error.email && (
+          <p className={kelasError}>{error.email}</p>
+        )}
+      </div>
+
+      {/* Nomor HP */}
+      <div>
+        <label htmlFor="hp" className={kelasLabel}>
+          Nomor HP
+        </label>
+
+        <input
+          type="tel"
+          id="hp"
+          value={hp}
+          onChange={ubahInput(setHp)}
+          className={kelasInput}
+          placeholder="Contoh: 081234567890"
+        />
+
+        {error.hp && (
+          <p className={kelasError}>{error.hp}</p>
+        )}
+      </div>
+
+      {/* Keperluan */}
+      <div>
+        <label htmlFor="keperluan" className={kelasLabel}>
+          Keperluan
+        </label>
+
+        <select
+          id="keperluan"
+          value={keperluan}
+          onChange={ubahInput(setKeperluan)}
+          className={kelasInput}
+        >
+          <option value="">Pilih keperluan</option>
+          <option value="bertanya">Bertanya</option>
+          <option value="kerja-sama">Kerja sama proyek</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+
+        {error.keperluan && (
+          <p className={kelasError}>{error.keperluan}</p>
+        )}
+      </div>
+
+      {/* Pesan */}
+      <div>
+        <label htmlFor="pesan" className={kelasLabel}>
+          Pesan
+        </label>
+
+        <textarea
+          id="pesan"
+          rows="5"
+          value={pesan}
+          onChange={ubahInput(setPesan)}
+          className={kelasInput}
+          placeholder="Tuliskan pesan minimal 10 karakter"
+        />
+
+        {error.pesan && (
+          <p className={kelasError}>{error.pesan}</p>
+        )}
+      </div>
+
+      {/* Tombol kirim */}
+      <button
+        type="submit"
+        className="rounded-lg bg-aksen px-6 py-3 font-semibold text-white transition hover:opacity-90"
+      >
+        Kirim Pesan
+      </button>
+ <p className="text-xs text-gray-500 dark:text-gray-400">
+  Form ini belum mengirim pesan. Pengiriman pesan diaktifkan di Minggu 15.
+</p>
+
+      {/* Pesan berhasil */}
+      {berhasil && (
+        <p className="rounded-lg bg-green-100 p-4 font-semibold text-green-800 dark:bg-green-900/40 dark:text-green-300">
+          Pesan berhasil melewati pemeriksaan dan formulir sudah valid!
+        </p>
+      )}
+    </form>
+  );
 }
