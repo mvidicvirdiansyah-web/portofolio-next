@@ -2,7 +2,7 @@ export const proyek = [
     {
         slug: "Pulsa",
         judul: "Pulsa",
-        kategori: "Next-js",
+        kategori: "Next.js",
         minggu: "Pekan 1",
         gambar: "/proyek/proyek-pulsa.png.png",
         deskripsi: "APK pengelola pulsa, dibuat dengan Next.js ",
@@ -16,7 +16,7 @@ fitur: [
     {
         slug: "Laundry",
         judul: " APK Laundry",
-        kategori: "Mext.js",
+        kategori: "Next.js",
         minggu: "Pekan 5",
         gambar: "/proyek/proyek-laundry.png.png",
         deskripsi: "APK untuk pengelola pesanan laundry.",
@@ -29,7 +29,7 @@ fitur: [
     {
         slug: "Portofolio",
         judul: "Portofolio",
-        kategori: "Next.js , Tailwind CSS ",
+        kategori: "Next.js , ",
         minggu: "Pekan 10",
         gambar: "/proyek/proyek-portofolio.png.png",
         deskripsi: "Jadwal belajar mingguan dengan thead dan tbody.",
@@ -43,7 +43,7 @@ fitur: [
     {
         slug: "TopupGame",
         judul: "Top up game",
-        kategori: "Next.js , Tailwinl CSS ",
+        kategori: "Next.js ,  ",
         minggu: "Minggu 15",
         gambar: "/proyek/proyek-topupgame.png.png",
         deskripsi: "APK penjualan item game",
@@ -69,7 +69,7 @@ fitur: [
     {
         slug: "Pulsaku",
         judul: "Pulsaku",
-        kategori: "Next.js , Tailwind CSS",
+        kategori: "Next.js ,",
         minggu: "Pekan 34",
         gambar: "/proyek/proyek-pulsaaku.png.png",
         deskripsi: "Apk khusus penjualan saldo dll",
