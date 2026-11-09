@@ -6,7 +6,7 @@ export const proyek = [
         minggu: "Pekan 1",
         gambar: "/proyek/proyek-pulsa.png.png",
         deskripsi: "APK pengelola pulsa, dibuat dengan Next.js ",
-
+    
 fitur: [
             "Pengelola keuangan pulsa",
             "bisa untuk berjualan pulsa",
@@ -44,7 +44,7 @@ fitur: [
         slug: "TopupGame",
         judul: "Top up game",
         kategori: "Next.js ,  ",
-        minggu: "Minggu 15",
+        minggu: "Pekan 15",
         gambar: "/proyek/proyek-topupgame.png.png",
         deskripsi: "APK penjualan item game",
         fitur: [
