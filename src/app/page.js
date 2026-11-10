@@ -2,7 +2,11 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import ProyekCard from "@/components/ProyekCard";
-import { proyek } from "@/data/proyek";
+import SkillCard from "@/components/SkillCard";
+import { buttonVariants } from "@/components/ui/button";
+import { supabase } from "@/lib/supabase";
+
+
 
 const keahlian = [
     { nama: "HTML", level: "Menengah" },
@@ -12,11 +16,15 @@ const keahlian = [
     { nama: "JavaScript", level: "Dasar" },
 ];
 
-export default function Home() {
-    const proyekTerbaru = proyek.slice(0, 3);
+export default async function Home() {
+    const { data: proyekTerbaru } = await supabase
+        .from("projects")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(3);
 
     return (
-        <div className="min-h-screen bg-[#F1FAEE] dark:bg-gray-900">
+        <div className="min-h-screen bg-background text-foreground">
             <main className="mx-auto max-w-5xl px-4 py-10">
                 <Hero
                     nama="Muhammad Vidic Virdiansyah"
@@ -25,7 +33,7 @@ export default function Home() {
 
                 {/* Keahlian */}
                 <section className="mt-8">
-                    <h2 className="mb-4 text-2xl font-bold text-utama dark:text-sky-200">
+                    <h2 className="mb-4 text-2xl font-bold text-primary">
                         Keahlian
                     </h2>
 
@@ -33,13 +41,14 @@ export default function Home() {
                         {keahlian.map((item) => (
                             <div
                                 key={item.nama}
-                                className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+                               className="rounded-xl border border-border bg-card p-4 text-card-foreground shadow-sm"
                             >
-                                <h3 className="font-bold text-utama dark:text-sky-200">
+                                <h3 className="font-bold text-primary">
                                     {item.nama}
                                 </h3>
 
-                                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                <p className="mt-1 text-sm text-muted-foreground
+">
                                     Level: {item.level}
                                 </p>
                             </div>
@@ -49,25 +58,29 @@ export default function Home() {
 
                 {/* Proyek Terbaru */}
                 <section className="mt-10">
-                    <h2 className="mb-4 text-2xl font-bold text-utama dark:text-sky-200">
+                    <h2 className="mb-4 text-2xl font-bold text-primary">
                         Proyek Terbaru
                     </h2>
 
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-                        {proyekTerbaru.map((item) => (
-                            <ProyekCard
-                                key={item.slug}
-                                proyek={item}
-                            />
-                        ))}
+                      {proyekTerbaru && proyekTerbaru.map((item) => (
+    <ProyekCard
+        key={item.slug}
+        proyek={item}
+    />
+))}
                     </div>
 
-                    <Link
-                        href="/proyek"
-                        className="mt-6 inline-block rounded-lg bg-utama px-5 py-2 font-semibold text-white transition hover:opacity-90"
-                    >
-                        Lihat Semua Proyek
-                    </Link>
+             <Link
+  href="/proyek"
+  className={buttonVariants({
+    size: "lg",
+    className:
+      "mt-6 bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200",
+  })}
+>
+  Lihat semua proyek
+</Link>
                 </section>
             </main>
         </div>

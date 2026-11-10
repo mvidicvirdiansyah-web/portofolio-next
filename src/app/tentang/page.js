@@ -56,11 +56,11 @@ export default function Tentang() {
 
                 {/* Tentang Saya */}
                 <section className="mt-8 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-                    <h2 className="text-2xl font-bold text-utama dark:text-sky-200">
+                    <h2 className="text-2xl font-bold text-primary">
                         Tentang Saya
                     </h2>
 
-                    <p className="py-2 text-gray-700 dark:text-gray-300">
+                    <p className="py-2 text-muted-foreground">
                         Saya adalah seorang Web Developer yang tertarik
                         dalam membuat website modern, responsif, dan
                         mudah digunakan. Saya juga memiliki passion untuk
@@ -73,13 +73,13 @@ export default function Tentang() {
                 <section className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {kartu.map((item) => (
                         <Kartu key={item.judul} judul={item.judul}>
-                            <p className="text-gray-700 dark:text-gray-300">
+                            <p className="text-muted-foreground">
                                 {item.deskripsi}
                             </p>
-                            <p className="text-gray-700 dark:text-gray-300">
+                            <p className="text-muted-foreground">
                                 {item.deskripsi2}
                             </p>
-                            <p className="text-gray-700 dark:text-gray-300">
+                            <p className="text-muted-foreground">
                                 {item.deskripsi3}
                             </p>
                         </Kartu>
@@ -88,7 +88,7 @@ export default function Tentang() {
 
                 {/* Keahlian */}
                 <section className="mt-6 rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                    <h2 className="mb-4 text-2xl font-bold text-utama dark:text-sky-200">
+                    <h2 className="mb-4 text-2xl font-bold text-primary">
                         Keahlian
                     </h2>
 
@@ -105,7 +105,7 @@ export default function Tentang() {
 
                 {/* Jadwal Belajar */}
                 <section className="mt-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                    <h2 className="mb-3 text-lg font-bold text-utama dark:text-sky-200">
+                    <h2 className="mb-3 text-lg font-bold text-primary">
                         Jadwal Belajar
                     </h2>
 
@@ -125,13 +125,13 @@ export default function Tentang() {
                                         key={item.hari}
                                         className="border-b border-gray-100 dark:border-gray-700"
                                     >
-                                        <td className="px-3 py-2 text-gray-700 dark:text-gray-300">
+                                        <td className="px-3 py-2 text-muted-foreground">
                                             {item.hari}
                                         </td>
-                                        <td className="px-3 py-2 text-gray-700 dark:text-gray-300">
+                                        <td className="px-3 py-2 text-muted-foreground">
                                             {item.waktu}
                                         </td>
-                                        <td className="px-3 py-2 text-gray-700 dark:text-gray-300">
+                                        <td className="px-3 py-2 text-muted-foreground">
                                             {item.kegiatan}
                                         </td>
                                     </tr>

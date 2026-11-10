@@ -12,8 +12,8 @@ export default function Hero({ nama, tagline }) {
   className=" h-45 w-45 shrink-0 rounded-full border-4 border-aksen object-cover"
 />
       <div>
-        <h1 className="text-4xl font-bold text-utama dark:text-sky-200 md:text-4xl">Halo, saya {nama}!</h1>
-        <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{tagline}</p>
+        <h1 className="text-4xl font-bold text-primary md:text-4xl">Halo, saya {nama}!</h1>
+        <p className="mt-2 text-sm text-muted-foreground">{tagline}</p>
       </div>
     </section>
   );

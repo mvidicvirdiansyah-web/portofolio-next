@@ -7,7 +7,7 @@ const kelasInput =
   "mt-1 w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100";
 
 const kelasLabel =
-  "block font-semibold text-gray-800 dark:text-gray-100";
+  "block font-semibold text-foreground";
 
 const kelasError =
   "mt-1 text-sm text-red-600 dark:text-red-400";

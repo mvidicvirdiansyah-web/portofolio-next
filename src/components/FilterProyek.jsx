@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import ProyekCard from "@/components/ProyekCard";
+import { Button } from "@/components/ui/button";
 
 const daftarKategori = ["Semua", "HTML", "CSS", "JavaScript", "Next.js"];
 
@@ -38,14 +39,10 @@ export default function FilterProyek({ proyek }) {
       {/* Filter kategori */}
       <div className="flex flex-wrap gap-2">
         {daftarKategori.map((k) => (
-          <button
-            key={k}
-            type="button"
-            onClick={() => setKategori(k)}
-            className={kategori === k ? tombolAktif : tombolBiasa}
-          >
+          <Button key={k} variant={kategori === k ? "default" :
+            "outline"} onClick={() => setKategori(k)}>
             {k}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -69,18 +66,16 @@ export default function FilterProyek({ proyek }) {
 
         {/* Tombol hapus pencarian */}
         {kata !== "" && (
-          <button
-            type="button"
-            onClick={() => setKata("")}
-            className="mt-2 text-sm font-semibold text-aksen hover:underline dark:text-red-300"
-          >
+          <Button variant="link" onClick={() => setKata("")}
+            className="mt-2 px-0 text-aksen">
             Hapus pencarian
-          </button>
+          </Button>
         )}
       </div>
 
       {/* Jumlah hasil pencarian */}
-      <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+      <p className="mt-4 text-sm text-muted-foreground
+">
         Menampilkan {hasil.length} dari {proyek.length} proyek
       </p>
 

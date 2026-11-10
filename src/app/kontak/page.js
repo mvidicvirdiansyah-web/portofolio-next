@@ -12,11 +12,12 @@ export default function Kontak() {
     <div className="min-h-screen bg-[#F1FAEE] dark:bg-gray-900">
       <main className="mx-auto max-w-5xl px-4 py-5 sm:px-6">
         {/* Judul halaman */}
-        <h1 className="text-2xl font-bold text-utama dark:text-sky-200">
+        <h1 className="text-2xl font-bold text-primary">
           Hubungi Saya
         </h1>
 
-        <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">
+        <p className="mt-1 text-xs text-muted-foreground
+">
           Punya pertanyaan atau ingin bekerja sama? Isi form berikut.
         </p>
 
@@ -29,7 +30,7 @@ export default function Kontak() {
 
           {/* Informasi kontak */}
           <aside className="rounded-lg border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="text-lg font-bold text-utama dark:text-sky-200">
+            <h2 className="text-lg font-bold text-primary">
               Temukan Saya di
             </h2>
 
