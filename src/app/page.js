@@ -6,17 +6,12 @@ import SkillCard from "@/components/SkillCard";
 import { buttonVariants } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 
-
-
-const keahlian = [
-    { nama: "HTML", level: "Menengah" },
-    { nama: "CSS", level: "Menengah" },
-    { nama: "Git dan GitHub", level: "Dasar" },
-    { nama: "Desain poster dengan Canva", level: "Mahir" },
-    { nama: "JavaScript", level: "Dasar" },
-];
-
 export default async function Home() {
+    const { data: skills } = await supabase
+        .from("skills")
+        .select("*")
+        .order("id");
+
     const { data: proyekTerbaru } = await supabase
         .from("projects")
         .select("*")
@@ -38,20 +33,12 @@ export default async function Home() {
                     </h2>
 
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                        {keahlian.map((item) => (
-                            <div
-                                key={item.nama}
-                               className="rounded-xl border border-border bg-card p-4 text-card-foreground shadow-sm"
-                            >
-                                <h3 className="font-bold text-primary">
-                                    {item.nama}
-                                </h3>
-
-                                <p className="mt-1 text-sm text-muted-foreground
-">
-                                    Level: {item.level}
-                                </p>
-                            </div>
+                        {skills && skills.map((item) => (
+                            <SkillCard
+                                key={item.id}
+                                nama={item.nama}
+                                level={item.level}
+                            />
                         ))}
                     </div>
                 </section>
@@ -63,24 +50,24 @@ export default async function Home() {
                     </h2>
 
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-                      {proyekTerbaru && proyekTerbaru.map((item) => (
-    <ProyekCard
-        key={item.slug}
-        proyek={item}
-    />
-))}
+                        {proyekTerbaru && proyekTerbaru.map((item) => (
+                            <ProyekCard
+                                key={item.slug}
+                                proyek={item}
+                            />
+                        ))}
                     </div>
 
-             <Link
-  href="/proyek"
-  className={buttonVariants({
-    size: "lg",
-    className:
-      "mt-6 bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200",
-  })}
->
-  Lihat semua proyek
-</Link>
+                    <Link
+                        href="/proyek"
+                        className={buttonVariants({
+                            size: "lg",
+                            className:
+                                "mt-6 bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200",
+                        })}
+                    >
+                        Lihat semua proyek
+                    </Link>
                 </section>
             </main>
         </div>
