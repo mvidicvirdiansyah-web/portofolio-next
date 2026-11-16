@@ -1,11 +1,13 @@
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
- variable: "--font-sans",
- subsets: ["latin"],
+  variable: "--font-sans",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
@@ -15,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Muhammad Vidic Virdiansyah | Portofolio",
-  description: "Portofolio Vidic Virdiansyah, siswa SMKN 1 PASURUAN  di kelas industri UBIG",
+  description:
+    "Portofolio Vidic Virdiansyah, siswa SMKN 1 PASURUAN di kelas industri UBIG",
 };
 
 export default function RootLayout({ children }) {
@@ -24,11 +27,12 @@ export default function RootLayout({ children }) {
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-backgroundtext-foreground">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         <Navbar />
         {children}
         <Footer />
-        </body>
+        <Toaster position="top-center" />
+      </body>
     </html>
   );
 }

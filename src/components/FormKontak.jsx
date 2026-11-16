@@ -177,16 +177,16 @@ export default function FormKontak() {
 
       {/* Tombol kirim */}
 
-<Button
-    type="submit"
-    size="lg"
-    className="rounded-xl bg-[#E63946] px-8 py-4 font-semibold text-white shadow-md shadow-red-500/20 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:bg-[#C1121F] hover:shadow-xl hover:shadow-red-500/40 active:translate-y-0 active:scale-95"
->
-    Kirim Pesan
-</Button>
- <p className="text-xs text-gray-500 dark:text-gray-400">
-  Form ini belum mengirim pesan. Pengiriman pesan diaktifkan di Minggu 15.
-</p>
+      <Button
+        type="submit"
+        size="lg"
+        className="rounded-xl bg-[#E63946] px-8 py-4 font-semibold text-white shadow-md shadow-red-500/20 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:bg-[#C1121F] hover:shadow-xl hover:shadow-red-500/40 active:translate-y-0 active:scale-95"
+      >
+        Kirim Pesan
+      </Button>
+      <p className="text-xs text-gray-500 dark:text-gray-400">
+        Form
+        ini belum mengirim pesan.</p>
 
       {/* Pesan berhasil */}
       {berhasil && (
